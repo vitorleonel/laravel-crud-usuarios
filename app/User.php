@@ -8,7 +8,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable;
+	use Notifiable;
+
+	/**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'is_admin' => 'boolean',
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -46,7 +55,7 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [
-			'is_admin' => false
+			'is_admin' => $this->is_admin
 		];
     }
 }
