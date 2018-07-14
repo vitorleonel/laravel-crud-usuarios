@@ -13,33 +13,62 @@ const routes = [
 	{
 		path: '/login',
 		name: 'app.login',
-		component: LoginPage
+		component: LoginPage,
+		meta: {
+			requiredAuth: false,
+		},
 	},
 	{
 		path: '/register',
 		name: 'app.register',
-		component: RegisterPage
+		component: RegisterPage,
+		meta: {
+			requiredAuth: false,
+		},
 	},
 	{
 		path: '/',
 		name: 'app.home',
-		component: HomePage
+		component: HomePage,
+		meta: {
+			requiredAuth: true,
+		},
 	},
 	{
 		path: '/users',
 		name: 'app.users',
-		component: UsersPage
+		component: UsersPage,
+		meta: {
+			requiredAuth: true,
+		},
 	},
 	{
 		path: '/account',
 		name: 'app.account',
-		component: AccountPage
+		component: AccountPage,
+		meta: {
+			requiredAuth: true,
+		},
 	},
 ];
 
 const router = new VueRouter({
 	mode: 'history',
 	routes,
+});
+
+router.beforeEach((to, from, next) => {
+	if(! to.meta.requiredAuth) {
+		next();
+	} else {
+		const authenticate = JSON.parse(window.localStorage.getItem('m2center::authenticate'));
+
+		if(! authenticate) {
+			next({ name: 'app.login' });
+		}
+
+		next();
+	}
 });
 
 export default router;

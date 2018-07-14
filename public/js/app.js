@@ -12741,28 +12741,57 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 var routes = [{
 	path: '/login',
 	name: 'app.login',
-	component: __WEBPACK_IMPORTED_MODULE_2__pages_login_login___default.a
+	component: __WEBPACK_IMPORTED_MODULE_2__pages_login_login___default.a,
+	meta: {
+		requiredAuth: false
+	}
 }, {
 	path: '/register',
 	name: 'app.register',
-	component: __WEBPACK_IMPORTED_MODULE_3__pages_register_register___default.a
+	component: __WEBPACK_IMPORTED_MODULE_3__pages_register_register___default.a,
+	meta: {
+		requiredAuth: false
+	}
 }, {
 	path: '/',
 	name: 'app.home',
-	component: __WEBPACK_IMPORTED_MODULE_4__pages_home_home___default.a
+	component: __WEBPACK_IMPORTED_MODULE_4__pages_home_home___default.a,
+	meta: {
+		requiredAuth: true
+	}
 }, {
 	path: '/users',
 	name: 'app.users',
-	component: __WEBPACK_IMPORTED_MODULE_5__pages_users_users___default.a
+	component: __WEBPACK_IMPORTED_MODULE_5__pages_users_users___default.a,
+	meta: {
+		requiredAuth: true
+	}
 }, {
 	path: '/account',
 	name: 'app.account',
-	component: __WEBPACK_IMPORTED_MODULE_6__pages_account_account___default.a
+	component: __WEBPACK_IMPORTED_MODULE_6__pages_account_account___default.a,
+	meta: {
+		requiredAuth: true
+	}
 }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
 	mode: 'history',
 	routes: routes
+});
+
+router.beforeEach(function (to, from, next) {
+	if (!to.meta.requiredAuth) {
+		next();
+	} else {
+		var authenticate = JSON.parse(window.localStorage.getItem('m2center::authenticate'));
+
+		if (!authenticate) {
+			next({ name: 'app.login' });
+		}
+
+		next();
+	}
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (router);
