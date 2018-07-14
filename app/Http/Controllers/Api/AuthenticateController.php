@@ -19,7 +19,7 @@ class AuthenticateController extends Controller
 	 *
 	 * @var int
 	 */
-	protected $maxAttempts = 30;
+	protected $maxAttempts = 3;
 
 	/**
 	 * Number of minutes to throttle for.
