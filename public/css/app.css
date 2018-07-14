@@ -6393,6 +6393,36 @@ table {
   * @import "utilities/skew-transforms";
   */
 
+/**
+  * Custom components
+  */
+
+.input {
+  width: 100%;
+  border-width: 1px;
+  border-color: #dae1e7;
+  padding: .5rem;
+  margin-bottom: 1rem;
+  border-radius: .25rem;
+  outline: 0;
+}
+
+.input:hover {
+  border-color: #b8c2cc;
+}
+
+.button {
+  width: 100%;
+  background-color: #3490dc;
+  padding: .5rem;
+  border-radius: .25rem;
+  color: #fff;
+}
+
+.button:hover {
+  background-color: #2779bd;
+}
+
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;

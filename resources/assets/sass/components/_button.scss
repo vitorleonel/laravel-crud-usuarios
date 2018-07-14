@@ -1,0 +1,7 @@
+.button {
+	@apply .w-full .bg-blue .p-2 .rounded .text-white;
+
+	&:hover {
+		@apply .bg-blue-dark;
+	}
+}

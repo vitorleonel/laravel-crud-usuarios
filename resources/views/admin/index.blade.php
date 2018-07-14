@@ -9,7 +9,7 @@
 
     <title>{{ env('APP_NAME') }}</title>
 </head>
-<body class="sans-serif">
+<body>
     <div id="app">
     </div><!-- end #app -->
 

@@ -1,0 +1,7 @@
+.input {
+	@apply .w-full .border .border-grey-light .p-2 .mb-4 .rounded .outline-none;
+
+	&:hover {
+		@apply .border-grey;
+	}
+}
