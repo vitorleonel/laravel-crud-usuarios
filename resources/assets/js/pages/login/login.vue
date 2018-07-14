@@ -107,7 +107,7 @@
   @tailwind utilities;
 
   .login {
-    @apply .w-screen .h-screen .bg-grey-light .flex .justify-center .items-center;
+    @apply .w-screen .h-screen .flex .justify-center .items-center;
 
     .form {
       max-width: 400px;
