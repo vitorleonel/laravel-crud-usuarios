@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+/**
+ * Admin
+ */
+Route::get('/admin/{any?}', function() {
+    return view('admin.index');
+})->where('any', '.*');
