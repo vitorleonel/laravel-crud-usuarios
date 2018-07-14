@@ -1,7 +1,8 @@
 .input {
-	@apply .w-full .border .border-grey-light .p-2 .mb-4 .rounded .outline-none;
+	@apply .w-full .border .border-grey-light .p-3 .mt-1 .mb-4 .rounded .outline-none;
 
-	&:hover {
+	&:hover,
+	&:focus {
 		@apply .border-grey;
 	}
 }
