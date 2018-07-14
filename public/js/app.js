@@ -15289,9 +15289,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Register'
+	name: 'Register',
+
+	data: function data() {
+		return {
+			isLoading: false
+		};
+	},
+
+
+	methods: {
+		submitForm: function submitForm() {
+			var _this = this;
+
+			if (!this.preValidate()) {
+				return;
+			}
+
+			this.isLoading = true;
+
+			setTimeout(function () {
+				return _this.isLoading = false;
+			}, 4000);
+		},
+		preValidate: function preValidate() {
+			return true;
+		}
+	}
 });
 
 /***/ }),
@@ -15302,15 +15330,19 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "register" }, [
-      _c("form", { staticClass: "form" }, [
+  return _c("div", { staticClass: "register" }, [
+    _c(
+      "form",
+      {
+        staticClass: "form",
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.submitForm($event)
+          }
+        }
+      },
+      [
         _c("label", { attrs: { for: "name" } }, [_vm._v("Nome completo")]),
         _vm._v(" "),
         _c("input", {
@@ -15350,11 +15382,25 @@ var staticRenderFns = [
           }
         }),
         _vm._v(" "),
-        _c("button", { staticClass: "button" }, [_vm._v("Cadastrar")])
-      ])
-    ])
-  }
-]
+        _c(
+          "button",
+          {
+            staticClass: "button",
+            attrs: { type: "submit", disabled: _vm.isLoading }
+          },
+          [
+            _vm._v(
+              "\n\t\t\t\t" +
+                _vm._s(_vm.isLoading ? "Aguarde..." : "Cadastrar") +
+                "\n\t\t\t"
+            )
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

@@ -1,6 +1,6 @@
 <template>
   <div class="register">
-    <form class="form">
+    <form class="form" @submit.prevent="submitForm">
 			<label for="name">Nome completo</label>
       <input type="text" class="input" id="name" autofocus placeholder="seu nome completo">
 
@@ -13,14 +13,38 @@
 			<label for="repassword">Confirmar senha</label>
       <input type="password" class="input" id="repassword" placeholder="confirmar sua senha">
 
-      <button class="button">Cadastrar</button>
+      <button type="submit" class="button" :disabled="isLoading">
+				{{ isLoading ? 'Aguarde...' : 'Cadastrar' }}
+			</button>
     </form>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'Register',
+		name: 'Register',
+
+		data() {
+			return {
+				isLoading: false,
+			}
+		},
+
+		methods: {
+			submitForm() {
+				if(! this.preValidate()) {
+					return;
+				}
+
+				this.isLoading = true;
+
+				setTimeout(() => this.isLoading = false, 4000);
+			},
+
+			preValidate() {
+				return true;
+			},
+		},
   }
 </script>
 
