@@ -3,10 +3,10 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-import LoginPage from '../pages/login/login';
+import LoginPage from '../pages/login/Login';
 import RegisterPage from '../pages/register/register';
 import HomePage from '../pages/home/home';
-import UsersPage from '../pages/users/users';
+import UsersPage from '../pages/users/Users';
 import AccountPage from '../pages/account/account';
 
 const routes = [

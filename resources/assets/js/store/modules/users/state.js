@@ -1,3 +1,7 @@
 export default {
-	items: [],
+	items: [
+		{
+			id: 1,
+		}
+	],
 }

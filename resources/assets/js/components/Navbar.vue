@@ -1,16 +1,16 @@
 <template>
-	<header class="navbar">
-		<div class="container">
+	<header class="bg-white text-blue shadow py-6">
+		<div class="container mx-auto flex justify-between items-center">
 
-			<router-link :to="{ name: 'app.home' }" exact class="brand">
+			<router-link :to="{ name: 'app.home' }" exact class="text-blue no-underline">
 				<h1 class="text-xl">M2 Center</h1>
 			</router-link>
 
-			<div class="menu">
-				<router-link :to="{ name: 'app.home' }" exact>Início</router-link>
-				<router-link :to="{ name: 'app.users' }">Usuários</router-link>
-				<router-link :to="{ name: 'app.account' }">Minha Conta</router-link>
-				<router-link :to="{ name: 'app.account' }">Sair</router-link>
+			<div class="menu flex">
+				<router-link class="text-grey-dark no-underline" :to="{ name: 'app.home' }" exact>Início</router-link>
+				<router-link class="text-grey-dark no-underline" :to="{ name: 'app.users' }">Usuários</router-link>
+				<router-link class="text-grey-dark no-underline" :to="{ name: 'app.account' }">Minha Conta</router-link>
+				<router-link class="text-grey-dark no-underline" :to="{ name: 'app.account' }">Sair</router-link>
 			</div>
 
 		</div>
@@ -20,32 +20,16 @@
 <style lang="scss" scoped>
 	@tailwind utilities;
 
-	.navbar {
-		@apply .bg-blue .text-white .shadow .py-6;
+	.menu {
+		a {
+			&:not(:last-child) {
+				@apply .mr-6;
+			}
 
-		.container {
-			@apply .mx-auto .flex .justify-between .items-center;
-		}
-
-		.brand {
-			@apply .text-white .no-underline;
-		}
-
-		.menu {
-			@apply .flex;
-
-			a {
-				@apply .text-white .no-underline .antialiased;
-
-				&:not(:last-child) {
-					@apply .mr-6;
-				}
-
-				&:hover,
-				&.router-link-active,
-				&.router-link-exact-active {
-					@apply .underline;
-				}
+			&:hover,
+			&.router-link-active,
+			&.router-link-exact-active {
+				@apply .text-blue;
 			}
 		}
 	}

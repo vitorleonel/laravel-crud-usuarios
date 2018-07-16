@@ -6413,23 +6413,6 @@ table {
   border-color: #b8c2cc;
 }
 
-.button {
-  width: 100%;
-  background-color: #3490dc;
-  padding: .75rem;
-  border-radius: .25rem;
-  color: #fff;
-}
-
-.button:hover,
-.button:focus {
-  background-color: #2779bd;
-}
-
-.button:disabled {
-  background-color: #6cb2eb;
-}
-
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;

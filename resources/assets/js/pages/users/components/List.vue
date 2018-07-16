@@ -1,5 +1,5 @@
 <template>
-	<div class="flex -mx-4" v-if="items.length > 0">
+	<div class="flex flex-wrap -mx-4" v-if="items.length > 0">
 		<list-item v-for="item in items" :key="item.id" :item="item" />
 	</div>
 
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-	import { mapGetters } from 'vuex';
+	import { mapGetters, mapActions } from 'vuex';
 	import ListItem from './ListItem';
 
 	export default {
@@ -31,6 +31,14 @@
 			... mapGetters({
 				items: 'getUsers'
 			})
+		},
+
+		mounted() {
+			this.getUsers();
+		},
+
+		methods: {
+			... mapActions(['getUsers'])
 		},
 	}
 </script>
