@@ -9,3 +9,8 @@ Route::post('/authenticate', ['as' => 'api.authenticate', 'uses' => 'Api\Authent
  * Register
  */
 Route::post('/register', ['as' => 'api.register', 'uses' => 'Api\RegisterController@handler'])->middleware(['guest']);
+
+/**
+ * Users
+ */
+Route::apiResource('users', 'Api\UserController')->middleware(['auth:api']);
