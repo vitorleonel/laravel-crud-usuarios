@@ -1,7 +1,4 @@
 export default {
-	items: [
-		{
-			id: 1,
-		}
-	],
+	items: [],
+	selected: null
 }

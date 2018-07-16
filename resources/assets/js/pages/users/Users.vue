@@ -5,6 +5,7 @@
 		<div class="container mx-auto mt-6">
 
 			<UsersRegister />
+			<UsersEdit v-if="userSelected" />
 			<UsersList />
 
 		</div>
@@ -17,6 +18,7 @@
 	import Navbar from '../../components/Navbar';
 	import UsersList from './components/List';
 	import UsersRegister from './components/Register';
+	import UsersEdit from './components/Edit';
 
 	export default {
 		name: 'Users',
@@ -25,6 +27,13 @@
 			Navbar,
 			UsersList,
 			UsersRegister,
+			UsersEdit,
+		},
+
+		computed: {
+			... mapGetters({
+				userSelected: 'getUserSelected'
+			})
 		},
 	}
 </script>

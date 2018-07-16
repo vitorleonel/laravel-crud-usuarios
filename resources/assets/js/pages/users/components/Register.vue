@@ -4,9 +4,7 @@
 			<Button text="Novo Usuário" shadow @click.native="toggleRegisterModal" />
 		</div>
 
-		<Modal v-show="registerModal" @closeModal="toggleRegisterModal">
-				<ErrorMessage :error="errorMessage" />
-
+		<Modal v-show="registerModal">
 				<form method="post" ref="form" @submit.prevent="submitForm">
 					<label for="name">Nome completo</label>
 					<input type="text" id="name" class="input" placeholder="nome completo" required v-model="form.name">
@@ -27,13 +25,11 @@
 <script>
 	import { mapGetters, mapActions } from 'vuex';
 
-	import ErrorMessage from '../../../components/ErrorMessage';
 	import Modal from '../../../components/Modal';
 	import Button from '../../../components/Button';
 
 	export default {
 		components: {
-			ErrorMessage,
 			Modal,
 			Button,
 		},
@@ -41,8 +37,6 @@
 		data() {
 			return {
 				isLoading: false,
-
-				errorMessage: '',
 				registerModal: false,
 
 				form: {
@@ -77,7 +71,11 @@
 						this.toggleRegisterModal();
 						this.getUsers();
 					})
-					.catch(error => console.log(error))
+					.catch(error => {
+						const message = JSON.stringify(error.response);
+
+						alert(message);
+					})
 					.finally(() => this.isLoading = false);
 			},
 
