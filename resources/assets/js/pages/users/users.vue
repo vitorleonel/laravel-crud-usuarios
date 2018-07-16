@@ -3,21 +3,21 @@
 		<navbar />
 
 		<div class="container mx-auto mt-6">
-			<items />
+			<list />
 		</div>
 	</div>
 </template>
 
 <script>
 	import Navbar from '../../components/Navbar';
-	import Items from './components/Items';
+	import List from './components/List';
 
 	export default {
 		name: 'Users',
 
 		components: {
 			Navbar,
-			Items
+			List
 		},
 	}
 </script>
