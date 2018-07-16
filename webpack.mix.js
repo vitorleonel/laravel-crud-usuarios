@@ -22,3 +22,7 @@ mix.options({
 		require('autoprefixer'),
 	],
 });
+
+if (mix.inProduction()) {
+	mix.version();
+}
