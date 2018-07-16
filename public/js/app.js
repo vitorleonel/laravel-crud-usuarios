@@ -20361,6 +20361,12 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 		});
 	},
 
+	removeUser: function removeUser(state, id) {
+		state.items = state.items.filter(function (item) {
+			return item.id != id;
+		});
+	},
+
 	selectUser: function selectUser(state, payload) {
 		state.selected = payload;
 	}
@@ -20404,6 +20410,17 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 		return new Promise(function (resolve, reject) {
 			__WEBPACK_IMPORTED_MODULE_0__services_api__["a" /* default */].put('/users/' + payload.id, payload.data).then(function (response) {
 				context.commit('editUser', payload);
+				resolve(response);
+			}).catch(function (error) {
+				return reject(error);
+			});
+		});
+	},
+
+	removeUser: function removeUser(context, id) {
+		return new Promise(function (resolve, reject) {
+			__WEBPACK_IMPORTED_MODULE_0__services_api__["a" /* default */].delete('/users/' + id).then(function (response) {
+				context.commit('removeUser', id);
 				resolve(response);
 			}).catch(function (error) {
 				return reject(error);
@@ -20583,6 +20600,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				return _this.isLoading = false;
 			});
 		},
+		deleteUser: function deleteUser() {
+			var _this2 = this;
+
+			this.removeUser(this.userSelected.id).then(function (response) {
+				_this2.closeModal();
+			}).catch(function (error) {
+				var message = JSON.stringify(error.response);
+
+				alert(message);
+			}).finally(function () {
+				return _this2.isLoading = false;
+			});
+		},
 		preValidate: function preValidate() {
 			if (!this.form.name || !this.form.email) {
 				return false;
@@ -20597,7 +20627,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			this.form.email = '';
 			this.form.password = '';
 		}
-	}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['editUser', 'selectUser']))
+	}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['editUser', 'removeUser', 'selectUser']))
 });
 
 /***/ }),

@@ -79,6 +79,19 @@
 					.finally(() => this.isLoading = false);
 			},
 
+			deleteUser() {
+				this.removeUser(this.userSelected.id)
+					.then(response => {
+						this.closeModal();
+					})
+					.catch(error => {
+						const message = JSON.stringify(error.response);
+
+						alert(message);
+					})
+					.finally(() => this.isLoading = false);
+			},
+
 			preValidate() {
 				if(! this.form.name || ! this.form.email) {
 					return false;
@@ -95,7 +108,7 @@
 				this.form.password = '';
 			},
 
-			... mapActions(['editUser', 'selectUser'])
+			... mapActions(['editUser', 'removeUser', 'selectUser'])
 		},
 	}
 </script>

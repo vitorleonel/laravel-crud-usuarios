@@ -19,6 +19,10 @@ export default {
 		})
 	},
 
+	removeUser: (state, id) => {
+		state.items = state.items.filter(item => item.id != id);
+	},
+
 	selectUser: (state, payload) => {
 		state.selected = payload;
 	}

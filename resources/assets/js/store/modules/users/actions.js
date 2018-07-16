@@ -36,6 +36,17 @@ export default {
 		});
 	},
 
+	removeUser: (context, id) => {
+		return new Promise((resolve, reject) => {
+			api.delete(`/users/${id}`)
+				.then(response => {
+					context.commit('removeUser', id);
+					resolve(response);
+				})
+				.catch(error => reject(error));
+		});
+	},
+
 	selectUser: (context, payload) => {
 		context.commit('selectUser', payload);
 	}

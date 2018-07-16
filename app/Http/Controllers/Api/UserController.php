@@ -89,7 +89,7 @@ class UserController extends Controller
     public function destroy(int $id) {
 		$user = User::find($id);
 
-		if(! $user) {
+		if(! $user || $user->is_admin) {
 			return response()->json([
 				'message' => 'User not found.'
 			], 404);
