@@ -1,23 +1,30 @@
 <template>
 	<div>
-		<navbar />
+		<Navbar />
 
 		<div class="container mx-auto mt-6">
-			<list />
+
+			<UsersRegister />
+			<UsersList />
+
 		</div>
 	</div>
 </template>
 
 <script>
+	import { mapGetters } from 'vuex';
+
 	import Navbar from '../../components/Navbar';
-	import List from './components/List';
+	import UsersList from './components/List';
+	import UsersRegister from './components/Register';
 
 	export default {
 		name: 'Users',
 
 		components: {
 			Navbar,
-			List
+			UsersList,
+			UsersRegister,
 		},
 	}
 </script>
