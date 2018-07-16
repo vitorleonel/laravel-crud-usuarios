@@ -10,12 +10,27 @@
 				<router-link class="text-grey-dark no-underline" :to="{ name: 'app.home' }" exact>Início</router-link>
 				<router-link class="text-grey-dark no-underline" :to="{ name: 'app.users' }">Usuários</router-link>
 				<router-link class="text-grey-dark no-underline" :to="{ name: 'app.account' }">Minha Conta</router-link>
-				<router-link class="text-grey-dark no-underline" :to="{ name: 'app.account' }">Sair</router-link>
+				<div class="text-grey-dark no-underline cursor-pointer hover:text-blue" @click="logoutHandler">Sair</div>
 			</div>
 
 		</div>
 	</header>
 </template>
+
+<script>
+	export default {
+		methods: {
+			logoutHandler() {
+				window.localStorage.clear();
+
+				this.$router.push({
+					name: 'app.home'
+				});
+			},
+		},
+	}
+</script>
+
 
 <style lang="scss" scoped>
 	@tailwind utilities;

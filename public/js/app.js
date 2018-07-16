@@ -12845,7 +12845,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(103)
 /* template */
 var __vue_template__ = __webpack_require__(67)
 /* template functional */
@@ -19143,10 +19143,11 @@ var render = function() {
             ),
             _vm._v(" "),
             _c(
-              "router-link",
+              "div",
               {
-                staticClass: "text-grey-dark no-underline",
-                attrs: { to: { name: "app.account" } }
+                staticClass:
+                  "text-grey-dark no-underline cursor-pointer hover:text-blue",
+                on: { click: _vm.logoutHandler }
               },
               [_vm._v("Sair")]
             )
@@ -20775,6 +20776,44 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-4ab368a2", module.exports)
   }
 }
+
+/***/ }),
+/* 103 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	methods: {
+		logoutHandler: function logoutHandler() {
+			window.localStorage.clear();
+
+			this.$router.push({
+				name: 'app.home'
+			});
+		}
+	}
+});
 
 /***/ })
 /******/ ]);
