@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = new axios.create({
-	baseURL: 'http://m2center.test/api'
+	baseURL: 'http://m2center.vitorleonel.com/api'
 });
 
 instance.interceptors.request.use(config => {
