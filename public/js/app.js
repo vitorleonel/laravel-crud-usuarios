@@ -19093,7 +19093,7 @@ var render = function() {
             staticClass: "text-blue no-underline",
             attrs: { to: { name: "app.home" }, exact: "" }
           },
-          [_c("h1", { staticClass: "text-xl" }, [_vm._v("M2 Center")])]
+          [_c("h1", { staticClass: "text-xl" }, [_vm._v("M2 Center | Teste")])]
         ),
         _vm._v(" "),
         _c(

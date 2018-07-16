@@ -3,7 +3,7 @@
 		<div class="container mx-auto flex justify-between items-center">
 
 			<router-link :to="{ name: 'app.home' }" exact class="text-blue no-underline">
-				<h1 class="text-xl">M2 Center</h1>
+				<h1 class="text-xl">M2 Center | Teste</h1>
 			</router-link>
 
 			<div class="menu flex">
