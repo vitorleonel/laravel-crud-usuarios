@@ -9,15 +9,15 @@
 			<label for="password">Senha</label>
       <input type="password" class="input" id="password" placeholder="sua senha" required v-model="form.password">
 
-      <button type="submit" class="button" :disabled="isLoading">
-				{{ isLoading ? 'Aguarde...' : 'Entrar' }}
-			</button>
+			<Button type="submit" class="w-full" :text="isLoading ? 'Aguarde...' : 'Entrar'" />
     </form>
   </div>
 </template>
 
 <script>
 	import ErrorMessage from '../../components/ErrorMessage';
+	import Button from '../../components/Button';
+
 	import api from '../../services/api';
 
   export default {
@@ -25,6 +25,7 @@
 
 		components: {
 			ErrorMessage,
+			Button
 		},
 
 		data() {
