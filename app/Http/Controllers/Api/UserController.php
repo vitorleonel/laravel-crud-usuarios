@@ -7,6 +7,8 @@ use App\Http\Requests\User\StoreRequest;
 use App\Http\Controllers\Controller;
 
 use App\User;
+use App\Http\Resources\User\UserResource;
+use App\Http\Resources\User\UserResourceCollection;
 
 class UserController extends Controller
 {
@@ -22,16 +24,24 @@ class UserController extends Controller
 	 * Retrieve all users.
 	 */
 	public function index() {
-		return User::all();
+		$users = User::all();
+
+		return new UserResourceCollection($users);
 	}
 
 	/**
 	 * Retrieve a user.
 	 */
 	public function show(int $id) {
-		$user = User::findOrFail($id);
+		$user = User::find($id);
 
-		return $user;
+		if(! $user) {
+			return response()->json([
+				'message' => 'User not found.'
+			], 404);
+		}
+
+		return new UserResource($user);
 	}
 
 	/**
@@ -42,8 +52,9 @@ class UserController extends Controller
 	public function store(StoreRequest $request)
 	{
 		$data = $request->only(['name', 'email', 'password']);
+		$user = User::create($data);
 
-		return User::create($data);
+		return response()->json(null, 201);
 	}
 
 	/**
@@ -61,7 +72,7 @@ class UserController extends Controller
 		$user->fill($request->all());
 		$saved = $user->save();
 
-		if($user) {
+		if($saved) {
 			return response()->json([
 				'message' => 'User updated.'
 			], 204);
@@ -84,6 +95,14 @@ class UserController extends Controller
 			], 404);
 		}
 
-		$user->delete();
+		$deleted = $user->delete();
+
+		if($deleted) {
+			return response()->json(null, 204);
+		}
+
+		return response()->json([
+			'message' => 'User not deleted. Try again!'
+		], 400);
 	}
 }
