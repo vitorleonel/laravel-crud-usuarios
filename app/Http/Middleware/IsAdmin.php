@@ -15,6 +15,14 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
+		$payload = auth()->payload();
+
+		if(! $payload['is_admin']) {
+			return response()->json([
+				'message' => 'Unauthorized'
+			], 401);
+		}
+
         return $next($request);
     }
 }
