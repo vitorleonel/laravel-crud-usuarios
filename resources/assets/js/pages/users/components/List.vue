@@ -19,6 +19,7 @@
 </template>
 
 <script>
+	import { mapGetters } from 'vuex';
 	import ListItem from './ListItem';
 
 	export default {
@@ -26,10 +27,10 @@
 			ListItem
 		},
 
-		data() {
-			return {
-				items: [],
-			}
+		computed: {
+			... mapGetters({
+				items: 'getUsers'
+			})
 		},
 	}
 </script>
